@@ -6,6 +6,7 @@
 //
 
 
+
 package com.softified.core;
 
 import javax.xml.bind.annotation.XmlAccessType;
