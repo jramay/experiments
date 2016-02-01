@@ -25,5 +25,6 @@
   <modules>
   	<module>core</module>
     <module>services</module>
+    <module>myapp</module>
   </modules>
 </project>
