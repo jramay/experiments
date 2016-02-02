@@ -1,22 +1,54 @@
 <html>
 <head>
-<script src="main/lib/angular.js"></script>
-<script src="main/mainApp.js"></script>
-<script src="common/dataService.js"></script>
-<script src="main/mainController.js"></script>
+
+<link rel="stylesheet" type="text/css"
+	href="assets/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css"
+	href="assets/css/bootstrap-theme.min.css">
+
+<script src="assets/lib/angular.js"></script>
+<script
+	src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-messages.js"></script>
+
+
+<script src="mainApp/mainApp.js"></script>
+<script src="mainApp/common/dataService.js"></script>
+<script src="mainApp/mainController.js"></script>
 <title>AngularJS First Application</title>
 </head>
 
 <body>
-	<h1>My Application</h1>
+
 
 	<div ng-app="mainApp">
-		<form ng-submit="getMessage()" ng-controller="mainController">
-			<p>
-				Enter your Name: <input type="text" ng-model="name">
-			</p>
-			<button ng-click="getMessage()">Get Message</button>
-			<p>Message : {{message}}</p>
+		<form name="mainForm" class="form-horizontal"
+			ng-submit="getMessage(mainForm.$valid)"
+			ng-controller="mainController" novalidate>
+			<h3>My Application</h3>
+			<br>
+			<br>
+			<div class="form-group">
+				<label class="control-label col-xs-2">Name:</label>
+				<button class="btn btn-sm btn-primary"
+					ng-click="getMessage(mainForm.$valid)">Get Message</button>
+				<div class="col-xs-3">
+					<input class="form-control" name="name" type="text" ng-model="name"
+						placeholder="Enter name" required ng-minlength="3"
+						ng-maxlength="20">
+					<div ng-messages="mainForm.name.$error"
+						ng-show="mainForm.name.$touched || mainForm.$submitted">
+						<p ng-message="minlength">Your name is too short.</p>
+						<p ng-message="maxlength">Your name is too long.</p>
+						<p ng-message="required">Your name is required.</p>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-xs-offset-2 col-xs-10">
+					<p class="lead">Message : {{message}}</p>
+				</div>
+			</div>
+		</form>
 	</div>
 	</div>
 </body>
