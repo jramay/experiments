@@ -2,6 +2,7 @@
    <head>
    <script src = "main/lib/angular.js"></script>
    <script src = "main/mainApp.js"></script>
+   <script src = "common/dataService.js"></script>
    <script src = "main/mainController.js"></script>
    <title>AngularJS First Application</title>
    </head>

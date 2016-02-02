@@ -1,8 +1,8 @@
-mainApp.controller('mainController', function($scope, $http) {
+mainApp.controller('mainController', function($scope, dataService) {
 	
 	$scope.getMessage = function() {		
-		$http.get('http://localhost:8080/services/rest/hello.json?name='+$scope.name).
-	    success(function(data, status, headers, config) {
+		dataService.getMessage($scope.name).
+	    success(function(data) {
 	      $scope.message = data.message;
 	    }).
 	    error(function(data, status, headers, config) {
