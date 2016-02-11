@@ -1,1 +1,1 @@
-var mainApp = angular.module("mainApp", ['ngMessages']);
+var mainApp = angular.module("mainApp", ['ngMessages','customValidators']);

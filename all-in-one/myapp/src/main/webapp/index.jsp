@@ -10,7 +10,7 @@
 <script
 	src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-messages.js"></script>
 
-
+<script src="mainApp/common/customValidators.js"></script>
 <script src="mainApp/mainApp.js"></script>
 <script src="mainApp/common/dataService.js"></script>
 <script src="mainApp/mainController.js"></script>
@@ -22,24 +22,26 @@
 
 	<div ng-app="mainApp">
 		<form name="mainForm" class="form-horizontal"
-			ng-submit="getMessage(mainForm.$valid)"
+			ng-submit="mainForm.$valid && getMessage(mainForm.$valid)"
 			ng-controller="mainController" novalidate>
 			<h3>My Application</h3>
 			<br>
 			<br>
 			<div class="form-group">
 				<label class="control-label col-xs-2">Name:</label>
-				<button class="btn btn-sm btn-primary"
-					ng-click="getMessage(mainForm.$valid)">Get Message</button>
+				<button class="btn btn-sm btn-primary" ng-click="getMessage(mainForm.$valid)" ng-disabled="mainForm.$invalid || mainForm.$pending">Get Message</button>
 				<div class="col-xs-3">
 					<input class="form-control" name="name" type="text" ng-model="name"
 						placeholder="Enter name" required ng-minlength="3"
-						ng-maxlength="20">
-					<div ng-messages="mainForm.name.$error"
-						ng-show="mainForm.name.$touched || mainForm.$submitted">
+						ng-maxlength="20" username="getUserNames()">
+					<div ng-messages="mainForm.name.$error" ng-show="mainForm.name.$touched || mainForm.$submitted">
 						<p ng-message="minlength">Your name is too short.</p>
 						<p ng-message="maxlength">Your name is too long.</p>
 						<p ng-message="required">Your name is required.</p>
+						<p ng-message="username">This user name is already taken.</p>
+					</div>
+					<div ng-messages="mainForm.name.$pending" ng-show="mainForm.name.$touched || mainForm.$submitted">
+						<p ng-message="username">Validating user name.</p>
 					</div>
 				</div>
 			</div>
