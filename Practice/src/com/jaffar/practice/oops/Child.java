@@ -6,6 +6,8 @@ public class Child extends Parent{
 	
 	public int instanceInt = 100;
 	
+	
+	
 	public static void testStatic(){
 		System.out.println("Child testStatic");
 	}
