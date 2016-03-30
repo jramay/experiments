@@ -26,7 +26,7 @@ public class MainDriver {
 	
 	public static void main(String[] args) {
 		Parent oopsObject = new Child();
-		oopsObject.testStatic();
+		Parent.testStatic();
 		System.out.println("Static Int "+oopsObject.staticInt);
 		System.out.println("Instance Int "+oopsObject.instanceInt);
 		
