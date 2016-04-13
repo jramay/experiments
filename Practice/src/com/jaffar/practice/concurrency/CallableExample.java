@@ -19,6 +19,7 @@ public class CallableExample {
 			return Thread.currentThread().getName();
 		};
 
+		
 		List<Future<String>> list = new ArrayList<Future<String>>();
 		for (int i = 0; i < 10; i++) {
 			Future<String> future = executor.submit(callable);

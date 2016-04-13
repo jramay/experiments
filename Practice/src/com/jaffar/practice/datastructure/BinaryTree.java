@@ -6,7 +6,7 @@ import java.util.List;
 
 public class BinaryTree<T extends Comparable<T>> {
 
-	Node<T> rootNode;
+	TreeNode<T> rootNode;
 	
 	public BinaryTree(){
 		
@@ -25,9 +25,9 @@ public class BinaryTree<T extends Comparable<T>> {
         rootNode = insert(rootNode, data);
     }
 	
-	private Node<T> insert(Node<T> node, T data){
+	private TreeNode<T> insert(TreeNode<T> node, T data){
         if (node == null)
-            node = new Node<T>(null,data,null);
+            node = new TreeNode<T>(null,data,null);
         else
         {
             if (node.getRightNode() == null)
@@ -42,7 +42,7 @@ public class BinaryTree<T extends Comparable<T>> {
         return size(rootNode);
     }
     
-    private int size(Node<T> rootNode){
+    private int size(TreeNode<T> rootNode){
         if (rootNode == null)
             return 0;
         else
@@ -71,13 +71,13 @@ public class BinaryTree<T extends Comparable<T>> {
 	}
 }
 
-class Node<T extends Comparable<T>>{
+class TreeNode<T extends Comparable<T>>{
 	
-	Node<T> leftNode;
+	TreeNode<T> leftNode;
 	T data;
-	Node<T> rightNode;
+	TreeNode<T> rightNode;
 	
-	public Node(Node<T> leftNode, T data, Node<T> rightNode){
+	public TreeNode(TreeNode<T> leftNode, T data, TreeNode<T> rightNode){
 		
 		this.leftNode = leftNode;
 		this.data = data;
@@ -85,11 +85,11 @@ class Node<T extends Comparable<T>>{
 		
 	}
 
-	public Node<T> getLeftNode() {
+	public TreeNode<T> getLeftNode() {
 		return leftNode;
 	}
 
-	public void setLeftNode(Node<T> leftNode) {
+	public void setLeftNode(TreeNode<T> leftNode) {
 		this.leftNode = leftNode;
 	}
 
@@ -101,11 +101,11 @@ class Node<T extends Comparable<T>>{
 		this.data = data;
 	}
 
-	public Node<T> getRightNode() {
+	public TreeNode<T> getRightNode() {
 		return rightNode;
 	}
 
-	public void setRightNode(Node<T> rightNode) {
+	public void setRightNode(TreeNode<T> rightNode) {
 		this.rightNode = rightNode;
 	}
 	
@@ -113,13 +113,13 @@ class Node<T extends Comparable<T>>{
 
 class BTreePrinter {
 
-    public static <T extends Comparable<T>> void printNode(Node<T> rootNode) {
+    public static <T extends Comparable<T>> void printNode(TreeNode<T> rootNode) {
         int maxLevel = BTreePrinter.maxLevel(rootNode);
 
         printNodeInternal(Collections.singletonList(rootNode), 1, maxLevel);
     }
 
-    private static <T extends Comparable<T>> void printNodeInternal(List<Node<T>> nodes, int level, int maxLevel) {
+    private static <T extends Comparable<T>> void printNodeInternal(List<TreeNode<T>> nodes, int level, int maxLevel) {
         if (nodes.isEmpty() || BTreePrinter.isAllElementsNull(nodes))
             return;
 
@@ -130,8 +130,8 @@ class BTreePrinter {
 
         BTreePrinter.printWhitespaces(firstSpaces);
 
-        List<Node<T>> newNodes = new ArrayList<Node<T>>();
-        for (Node<T> node : nodes) {
+        List<TreeNode<T>> newNodes = new ArrayList<TreeNode<T>>();
+        for (TreeNode<T> node : nodes) {
             if (node != null) {
                 System.out.print(node.data);
                 newNodes.add(node.leftNode);
@@ -180,7 +180,7 @@ class BTreePrinter {
             System.out.print(" ");
     }
 
-    private static <T extends Comparable<T>> int maxLevel(Node<T> node) {
+    private static <T extends Comparable<T>> int maxLevel(TreeNode<T> node) {
         if (node == null)
             return 0;
 
