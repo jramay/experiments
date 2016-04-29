@@ -1,7 +1,7 @@
 /**
  * 
  */
-console.log("NodeJS Practice Project on EC2");
+console.log("NodeJS Practice Project on EC2 branch");
 
 var http = require("http");
 
